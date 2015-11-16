@@ -1,0 +1,21 @@
+{
+	"name": "Encal",
+	"description": "Google Calendar new tab page",
+	"version": "0.0.0.2",
+	"manifest_version": 2,
+	"chrome_url_overrides": {
+		"newtab": "newtab.html"
+	},
+	"permissions": [
+		"storage",
+		"identity",
+		"https://www.googleapis.com/calendar/v3"
+	],
+	"oauth2": {
+		"client_id":"<CLIENT_ID>.apps.googleusercontent.com",
+		"scopes": [
+			"https://www.googleapis.com/auth/calendar"
+		]
+	},
+   "key":"<APPLICATION_KEY>"
+}

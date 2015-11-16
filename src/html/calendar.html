@@ -1,0 +1,23 @@
+<table class="table table-bordered" style="table-layout:fixed;">
+    <thead>
+        <th>Google Calendar
+            <small ng-repeat="calendar in cal.calendars">
+            <label style="color:{{calendar.color}};">
+                <input type="checkbox" ng-model="calendar.visible" ng-change="cal.toggleVisibility(calendar)" value="calendar.name">
+                <span></span>
+            </label>
+            {{calendar.name}}
+        </small>
+        </th>
+    </thead>
+</table>
+<!-- <div class="row"> -->
+    <div style="overflow-y:auto; height:80%; margin-top:-22px;">
+        <table class="table table-bordered table-hover" style="table-layout:fixed">
+            <tbody>
+                <tr event ng-repeat="event in cal.events | stringContainsAllOf:searchController.search:'searchKey' | orderBy:'startTime'" ng-show="(searchController.search.length > 0 || event.visible)" ng-mouseenter="eventController.mouseenter()" ng-mouseleave="eventController.mouseleave()">
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<!-- </div> -->
