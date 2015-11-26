@@ -19,7 +19,8 @@
 			reload: reload,
 			toggleVisibility: toggleVisibility,
 			getCalendarWithId: getCalendarWithId,
-			getCalendarWithName: getCalendarWithName
+			getCalendarWithName: getCalendarWithName,
+			saveCalendars: saveCalendars
 		};
 		var controller;
 		var primaryCalendar;
@@ -42,12 +43,15 @@
 					primaryCalendar = local.primaryCalendar;
 					$rootScope.$apply();
 					if (local.last_fetched && local.last_fetched < new Date()
-						.getTime() - 300000) {
+						.getTime() - 3000) {
 						calendarVisibility = local.calendarVisibility;
 						if (!calendarVisibility) {
 							calendarVisibility = {};
 						}
 						reload();
+					} else {
+						console.log(local.last_fetched);
+						getToken();
 					}
 				} else {
 					calendarVisibility = local.calendarVisibility;
@@ -59,16 +63,23 @@
 			});
 		}
 
-		function reload() {
+		function getToken(callback) {
 			chrome.identity.getAuthToken({
 				'interactive': true
 			}, function (tkn) {
-
 				headers = {
 					'Authorization': 'Bearer ' + tkn,
 					'Content-Type': 'application/json; charset=UTF-8'
 				};
 				Event.setHeader(headers);
+				if (callback) {
+					callback();
+				}
+			});
+		}
+
+		function reload() {
+			getToken(function () {
 				startTime = new Date();
 				// startTime.setHours(0);
 				// startTime.setMinutes(0);

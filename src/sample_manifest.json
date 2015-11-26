@@ -1,7 +1,7 @@
 {
 	"name": "Encal",
 	"description": "Google Calendar new tab page",
-	"version": "0.0.0.2",
+	"version": "0.0.0.3",
 	"manifest_version": 2,
 	"chrome_url_overrides": {
 		"newtab": "newtab.html"

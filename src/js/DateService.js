@@ -44,9 +44,9 @@
 						}
 						return $filter('date')(parsedDate, format);
 					} else {
-						if (!timed) {
-							return "Today";
-						}
+						// if (!timed) {
+							// return "Today";
+						// }
 						return $filter('timeAgo')(date);
 					}
 				},

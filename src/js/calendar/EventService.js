@@ -6,6 +6,7 @@
 	function EventFactory(DateService, $http) {
 		var events = [];
 		var headers = {};
+		var parent;
 		var service = {
 			processEvent: processEvent,
 			getEvents: getEvents,
@@ -76,6 +77,7 @@
 			if (index > -1) {
 				events.splice(index, 1);
 			}
+			console.log(headers);
 			var url = "https://www.googleapis.com/calendar/v3/calendars/" + encodeURIComponent(ev.cal_id) + "/events/" + encodeURIComponent(ev.id);
 			$http({
 					method: 'DELETE',
@@ -84,6 +86,9 @@
 				})
 				.then(function (response) {
 					console.log("DELETE SUCCESS: " + response);
+					chrome.storage.local.set({
+						last_fetched: 1
+					});
 				}, function (error) {
 					console.error("DELETE EVENT ERROR: " + error);
 				});
@@ -107,7 +112,9 @@
 
 		function addEvent(text, calendar) {
 			if (!calendar) {
-				calendar = {"id":"primary"};
+				calendar = {
+					"id": "primary"
+				};
 			}
 			var url = "https://www.googleapis.com/calendar/v3/calendars/" + encodeURIComponent(calendar.id) + "/events/quickAdd?text=" + text.split(" ")
 				.join("+");
@@ -119,7 +126,10 @@
 				})
 				.then(function (response) {
 					console.log(response);
-					processEvent(response.data, calendar)
+					processEvent(response.data, calendar);
+					chrome.storage.local.set({
+						last_fetched: 1
+					});
 				}, function (error) {
 					console.error("ADD EVENT ERROR: " + error);
 				});
