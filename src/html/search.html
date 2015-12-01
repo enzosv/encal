@@ -1,3 +1,3 @@
 <input type="text" style="width: calc(100% - {{searchController.search ? '64' : '0'}}px)" class="form-control pull-left mousetrap" placeholder="Search or add events" ng-model="searchController.search" id="searchField">
-<input type="button" style="width:56px;" class="btn btn-default pull-right" value="Add" ng-click="searchController.add()" ng-show="searchController.search">
-<br><small ng-hide="searchController.search" class="pull-right">[alt-s]</small><small ng-show="searchController.search" class="pull-right">[alt-enter]</small>
+<input type="button" style="width:56px;" class="btn btn-default pull-right" value="Add" ng-click="searchController.add()" ng-if="searchController.search">
+<br><small ng-if="!searchController.search" class="pull-right">[alt-s]</small><small ng-if="searchController.search" class="pull-right">[alt-enter]</small>
