@@ -1,23 +1,22 @@
 <table class="table table-bordered" style="table-layout:fixed;">
-    <thead>
-        <th>Google Calendar
-            <small ng-repeat="calendar in cal.calendars">
-            <label style="color:{{calendar.color}};">
+    <th>
+        <small ng-repeat="calendar in cal.calendars">
+            <label>
                 <input type="checkbox" ng-model="calendar.visible" ng-change="cal.toggleVisibility(calendar)" value="calendar.name">
-                <span></span>
+                <span style="color:{{calendar.color}};"></span>
+                {{calendar.name}}
             </label>
-            {{calendar.name}}
+                
         </small>
-        </th>
-    </thead>
+    </th>
 </table>
 <!-- <div class="row"> -->
-    <div style="overflow-y:auto; height:80%; margin-top:-22px;">
-        <table class="table table-bordered table-hover" style="table-layout:fixed">
-            <tbody>
-                <tr event ng-repeat="event in cal.events | stringContainsAllOf:searchController.search:'searchKey' | orderBy:'startTime'" ng-if="(searchController.search.length > 0 || event.visible)" ng-mouseenter="eventController.mouseenter()" ng-mouseleave="eventController.mouseleave()">
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<div style="overflow-y:auto; height:80%; margin-top:-22px;">
+    <table class="table table-bordered table-hover" style="table-layout:fixed">
+        <tbody>
+            <tr event ng-repeat="event in cal.events | stringContainsAllOf:searchController.search:'searchKey' | orderBy:'startTime'" ng-if="(searchController.search.length > 0 || event.visible)" ng-mouseenter="eventController.mouseenter()" ng-mouseleave="eventController.mouseleave()">
+            </tr>
+        </tbody>
+    </table>
+</div>
 <!-- </div> -->
