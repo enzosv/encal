@@ -25,6 +25,7 @@
 						tomorrow = tomorrow.getTime();
 						if (parsedDate < tomorrow) {
 							if (isTimeless(parsedDate)) {
+								console.log(parsedDate);
 								format = "'Today'";
 							} else {
 								format = "h:mm a";

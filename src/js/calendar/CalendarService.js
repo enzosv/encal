@@ -43,7 +43,7 @@
 					primaryCalendar = local.primaryCalendar;
 					$rootScope.$apply();
 					if (local.last_fetched && local.last_fetched < new Date()
-						.getTime() - 3000) {
+						.getTime() - 300000) {
 						calendarVisibility = local.calendarVisibility;
 						if (!calendarVisibility) {
 							calendarVisibility = {};

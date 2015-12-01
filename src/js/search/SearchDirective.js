@@ -5,6 +5,7 @@
 
 	function searchDirective() {
 		var directive = {
+			restrict: "E",
 			templateUrl: "/html/search.html",
 			controller: "SearchController",
 			controllerAs: "searchController",

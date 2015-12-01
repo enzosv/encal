@@ -6,6 +6,7 @@
 	function EventFactory(DateService, $http) {
 		var events = [];
 		var headers = {};
+		var dateHeaders = [];
 		var parent;
 		var service = {
 			processEvent: processEvent,
@@ -61,6 +62,7 @@
 				ev.dateString = DateService.parse(start);
 				ev.fullDateString = DateService.getFullDate(start);
 			}
+			ev.newDateHeader = checkNewDateHeader(ev.dateString);
 
 			ev.searchKey = (ev.dateString + " " + ev.fullDateString + " " + ev.calName + " " + ev.name)
 				.toLowerCase();
@@ -96,6 +98,7 @@
 
 		function clearEvents() {
 			events = [];
+			dateHeaders = [];
 		}
 
 		function toggleVisibility(id) {
@@ -133,6 +136,18 @@
 				}, function (error) {
 					console.error("ADD EVENT ERROR: " + error);
 				});
+		}
+
+		function checkNewDateHeader(dateString){
+			for (var i = 0; i < dateHeaders.length; i++) {
+				if(dateHeaders[i] === dateString){
+					console.log(dateHeaders[i]);
+					return false;
+				}
+			}
+			console.log("new date header");
+			dateHeaders.push(dateString);
+			return true;
 		}
 	}
 })();
