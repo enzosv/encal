@@ -8,15 +8,18 @@
             </label>
                 
         </small>
+        <small>
+        <button ng-click="cal.reload()" style="background-color: transparent; border:none;" class="icon-arrows-cw pull-right">
+            
+        </button>
+        </small>
     </th>
 </table>
-<!-- <div class="row"> -->
 <div style="overflow-y:auto; height:80%; margin-top:-22px;">
     <table class="table table-bordered table-hover" style="table-layout:fixed">
         <tbody>
-            <tr event ng-repeat="event in cal.events | stringContainsAllOf:searchController.search:'searchKey' | orderBy:'startTime'" ng-if="(searchController.search.length > 0 || event.visible)" ng-mouseenter="eventController.mouseenter()" ng-mouseleave="eventController.mouseleave()">
+            <tr ng-if="(searchController.search.length > 0 || event.visible)" event ng-repeat="event in cal.events | stringContainsAllOf:searchController.search:'searchKey' | orderBy:'startTime'" ng-mouseenter="eventController.mouseenter()" ng-mouseleave="eventController.mouseleave()">
             </tr>
         </tbody>
     </table>
 </div>
-<!-- </div> -->

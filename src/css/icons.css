@@ -16,46 +16,33 @@ input[type="checkbox"] + span:before {
 }
 
 input[type="checkbox"] + span:before {
-    content: '\e802';
-}
-
-input[type="checkbox"]:checked + span:before {
-    content: '\e803';
-}
-
-button[type="icon"] + span:before{
-	font-family: 'endo';
-	padding-right: 3px;
-	font-size: 20px;
-	content: '\e800';
-}
-
-.icon-check:before {
-	font-family: 'endo';
-	font-size: 26px;
-    content: '\e800';
-}
-
-.icon-check-empty:before {
-	font-family: 'endo';
-	font-size: 26px;
     content: '\e801';
 }
 
-.icon-circle-full:before{
-    font-family: 'endo';
-    font-size: 20px;
-    content: '\e803';
+input[type="checkbox"]:checked + span:before {
+    content: '\e802';
 }
 
-.icon-circle-empty:before{
+.icon-circle-full:before {
     font-family: 'endo';
     font-size: 20px;
     content: '\e802';
 }
 
+.icon-circle-empty:before {
+    font-family: 'endo';
+    font-size: 20px;
+    content: '\e801';
+}
+
 .icon-trash-empty:before {
-	font-family: 'endo';
-    content: '\e804';
+    font-family: 'endo';
+    content: '\e800';
+    font-size: 16px;
+}
+
+.icon-arrows-cw:before {
+    font-family: 'endo';
+    content: '\e803';
     font-size: 16px;
 }
