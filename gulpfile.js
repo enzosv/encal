@@ -11,7 +11,8 @@ var gulp = require('gulp'),
     htmlmin = require('gulp-htmlmin'),
     zip = require('gulp-vinyl-zip'),
     replace = require('gulp-replace'),
-    rename = require("gulp-rename");
+    rename = require("gulp-rename"),
+    fontello = require("gulp-fontello");
 
 var packageName = 'encal';
 
@@ -38,6 +39,12 @@ gulp.task('minify-html', function () {
         .pipe(gulp.dest(packageName + '/html'));
 });
 
+gulp.task('fontello', function() {
+  return gulp.src('src/fontello/config.json')
+    .pipe(fontello())
+    .pipe(gulp.dest('src/fontello'));
+});
+
 gulp.task('clean-folder', function () {
     return del([
         packageName
@@ -50,8 +57,8 @@ gulp.task('copy-manifest', function () {
 });
 
 gulp.task('copy-font', function () {
-    return gulp.src('src/css/fonts/*')
-        .pipe(gulp.dest(packageName + '/fonts'));
+    return gulp.src('src/fontello/font/encal.woff')
+        .pipe(gulp.dest(packageName + '/fontello/font'));
 });
 
 gulp.task('clean-zip', function () {

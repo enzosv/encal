@@ -1,5 +1,6 @@
 {
   "name": "angular-stringcontains",
+  "version": "0.0.3",
   "authors": [
     "Enzo Vergara <vergara.enzo@gmail.com>"
   ],
@@ -10,7 +11,10 @@
     "angular",
     "filter",
     "json",
-    "string"
+    "string",
+    "contains",
+    "search",
+    "fuzzy"
   ],
   "license": "MIT",
   "homepage": "https://github.com/enzosv/angular-stringcontains",
@@ -19,19 +23,21 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "comparison.png",
+    "example",
+    "gulpfile.js"
   ],
   "dependencies": {
     "angular": "~1.4.7"
   },
-  "_release": "e5d6e029c9",
+  "_release": "0.0.3",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "e5d6e029c9da0a7504d9ff2619b865a0a6369c44"
+    "type": "version",
+    "tag": "0.0.3",
+    "commit": "c52b07a2ac5db51916323004f12d6fd8923a3c25"
   },
   "_source": "git://github.com/enzosv/angular-stringcontains.git",
   "_target": "*",
-  "_originalSource": "angular-stringcontains",
-  "_direct": true
+  "_originalSource": "angular-stringcontains"
 }

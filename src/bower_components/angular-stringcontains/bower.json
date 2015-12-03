@@ -1,5 +1,6 @@
 {
   "name": "angular-stringcontains",
+  "version": "0.0.1",
   "authors": [
     "Enzo Vergara <vergara.enzo@gmail.com>"
   ],
@@ -10,7 +11,10 @@
     "angular",
     "filter",
     "json",
-    "string"
+    "string",
+    "contains",
+    "search",
+    "fuzzy"
   ],
   "license": "MIT",
   "homepage": "https://github.com/enzosv/angular-stringcontains",
@@ -19,7 +23,10 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "comparison.png",
+    "example",
+    "gulpfile.js"
   ],
   "dependencies": {
     "angular": "~1.4.7"
