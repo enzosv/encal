@@ -9,10 +9,10 @@
 
 		vm.toggleVisibility = function (calendar) {
 			Calendar.toggleVisibility(calendar);
-		}
+		};
 
 		vm.reload = function(){
 			Calendar.reload();
-		}
+		};
 	}
 })();
