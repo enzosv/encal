@@ -34,12 +34,14 @@
 				if (local.calendars) {
 					calendars = local.calendars;
 					controller.calendars = calendars;
+					console.log(calendars);
 					for (var i = 0; i < calendars.length; i++) {
 						for (var j = 0; j < calendars[i].events.length; j++) {
-							Event.processEventTime(calendars[i].events[j]);
+							Event.prepareForDisplay(calendars[i].events[j]);
 						}
 					}
 					controller.events = Event.getEvents();
+					console.log(controller.events);
 					primaryCalendar = local.primaryCalendar;
 					$rootScope.$apply();
 					if (local.last_fetched && local.last_fetched < new Date()

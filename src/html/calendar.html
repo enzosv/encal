@@ -15,7 +15,7 @@
 <div style="overflow-y:auto; height:80%; margin-top:-22px;">
     <table class="table table-bordered table-hover" style="table-layout:fixed">
         <tbody>
-            <tr ng-if="(searchController.search.length > 0 || event.visible)" event ng-repeat="event in cal.events | stringContainsAllOf:searchController.search:'searchKey' | orderBy:'startTime'" ng-mouseenter="eventController.mouseenter()" ng-mouseleave="eventController.mouseleave()">
+            <tr ng-if="(searchController.search.length > 0 || event.visible)" event ng-repeat="event in cal.events | stringContainsAllOf:searchController.search:'searchKey' | orderBy:'parsedStart'" ng-mouseenter="eventController.mouseenter()" ng-mouseleave="eventController.mouseleave()">
             </tr>
         </tbody>
     </table>

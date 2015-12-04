@@ -12,6 +12,7 @@
             </small>
         <div ng-if="event.start.date" style="color:{{event.color}}; border:none; margin-top:8px; margin-right:8px;" class="icon-circle-full pull-left"></div>
         <div ng-if="event.start.dateTime" style="color:{{event.color}}; border:none; margin-top:8px; margin-right:8px;" class="icon-circle-empty pull-left"></div>
-        <p style="padding-top:10px;">{{event.name}}</p>
+
+        <p style="padding-top:10px;"><small ng-if="event.startTime">{{event.timeRange !== "" ? event.startTime : event.timeRange}} - </small>{{event.name}}</p>
     </div>
 </td>

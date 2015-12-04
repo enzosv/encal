@@ -7,12 +7,11 @@
 		var events = [];
 		var headers = {};
 		var dateHeaders = [];
-		var parent;
 		var service = {
 			processEvent: processEvent,
 			getEvents: getEvents,
 			remove: remove,
-			processEventTime: processEventTime,
+			prepareForDisplay: prepareForDisplay,
 			clearEvents: clearEvents,
 			toggleVisibility: toggleVisibility,
 			addEvent: addEvent,
@@ -31,43 +30,51 @@
 				"calName": cal.name,
 				"visible": cal.visible
 			};
-			return processEventTime(ev);
+			processEventTimes(ev);
+			prepareForDisplay(ev);
+			return ev;
 		}
 
-		function processEventTime(ev) {
-			var start;
+		function processEventTimes(ev) {
 			var end;
-			var timed = false;
+			var fullTimeRange;
 			if (ev.start.dateTime) {
-				timed = true;
-				start = Date.parse(ev.start.dateTime);
-
+				ev.parsedStart = Date.parse(ev.start.dateTime);
+				ev.startTime = DateService.getTime(ev.parsedStart);
 			} else {
-				start = Date.parse(ev.start.date) + 57540000;
+				ev.parsedStart = Date.parse(ev.start.date) + 57540000;
+				ev.startTime = "";
 			}
+
 
 			if (ev.end.dateTime) {
-				timed = true;
 				end = Date.parse(ev.end.dateTime);
+				// ev.endTime = DateService.getTime(end);
+
 			} else {
 				end = Date.parse(ev.end.date) + 57540000;
+				// ev.endTime = "";
 			}
 
-			ev.startTime = start;
-			if (end - start > 3600000 && end - start != 86400000) {
-				ev.endTime = end;
-				ev.dateString = DateService.getDateRange(start, end, timed);
-				ev.fullDateString = DateService.getFullDateRange(start, end, timed);
-			} else {
-				ev.dateString = DateService.parse(start);
-				ev.fullDateString = DateService.getFullDate(start);
+			if (end - ev.parsedStart > 3600000 && end-ev.parsedStart !== 86400000) {
+				ev.timeRange = DateService.getDateRange(ev.parsedStart, end);
+				fullTimeRange = DateService.getFullDateRange(ev.parsedStart, end);
+			} else{
+				fullTimeRange = "";
 			}
+
+			ev.searchKey = DateService.getFullDate(ev.parsedStart) + " " + fullTimeRange + " " + ev.startTime + " " + ev.calName + " " + ev.name;
+		}
+
+		function prepareForDisplay(ev) {
+			if (ev.dateString) {
+				ev.searchKey.replace(" " + ev.dateString.toLowerCase(), "");
+			}
+			ev.dateString = DateService.parse(ev.parsedStart);
+			ev.searchKey += " " + ev.dateString;
 			ev.newDateHeader = checkNewDateHeader(ev.dateString);
-
-			ev.searchKey = (ev.dateString + " " + ev.fullDateString + " " + ev.calName + " " + ev.name)
-				.toLowerCase();
+			ev.searchKey = ev.searchKey.toLowerCase();
 			events.push(ev);
-			return ev;
 		}
 
 		function getEvents() {
@@ -138,9 +145,9 @@
 				});
 		}
 
-		function checkNewDateHeader(dateString){
+		function checkNewDateHeader(dateString) {
 			for (var i = 0; i < dateHeaders.length; i++) {
-				if(dateHeaders[i] === dateString){
+				if (dateHeaders[i] === dateString) {
 					console.log(dateHeaders[i]);
 					return false;
 				}
