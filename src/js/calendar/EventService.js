@@ -42,7 +42,7 @@
 				ev.parsedStart = Date.parse(ev.start.dateTime);
 				ev.startTime = DateService.getTime(ev.parsedStart);
 			} else {
-				ev.parsedStart = Date.parse(ev.start.date) + 57540000;
+				ev.parsedStart = Date.parse(ev.start.date);
 				ev.startTime = "";
 			}
 
@@ -52,7 +52,7 @@
 				// ev.endTime = DateService.getTime(end);
 
 			} else {
-				end = Date.parse(ev.end.date) + 57540000;
+				end = Date.parse(ev.end.date);
 				// ev.endTime = "";
 			}
 
@@ -148,11 +148,9 @@
 		function checkNewDateHeader(dateString) {
 			for (var i = 0; i < dateHeaders.length; i++) {
 				if (dateHeaders[i] === dateString) {
-					console.log(dateHeaders[i]);
 					return false;
 				}
 			}
-			console.log("new date header");
 			dateHeaders.push(dateString);
 			return true;
 		}

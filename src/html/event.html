@@ -6,13 +6,17 @@
     </div>
     <div style="height:32px;">
         <small ng-show="eventController.hover" class="pull-right">
-                <button ng-click="eventController.remove(event)"style="background-color: transparent; color:red; border:none; margin-top:9px;" class="icon-trash-empty">
-                    Delete
-                </button>
-            </small>
+            <button ng-click="eventController.remove(event)" style="background-color: transparent; color:red; border:none; margin-top:9px;" class="icon-trash-empty">
+                Delete
+            </button>
+        </small>
         <div ng-if="event.start.date" style="color:{{event.color}}; border:none; margin-top:8px; margin-right:8px;" class="icon-circle-full pull-left"></div>
         <div ng-if="event.start.dateTime" style="color:{{event.color}}; border:none; margin-top:8px; margin-right:8px;" class="icon-circle-empty pull-left"></div>
-
-        <p style="padding-top:10px;"><small ng-if="event.startTime">{{event.timeRange !== "" ? event.startTime : event.timeRange}} - </small>{{event.name}}</p>
+        <p style="padding-top:10px;">
+            <small ng-if="event.startTime">
+                {{event.timeRange !== "" ? event.startTime : event.timeRange}} -
+            </small> {{event.name}}
+        </p>
     </div>
 </td>
+

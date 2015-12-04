@@ -3,12 +3,10 @@
         <small ng-repeat="calendar in cal.calendars">
             <label>
                 <input type="checkbox" ng-model="calendar.visible" ng-change="cal.toggleVisibility(calendar)" value="calendar.name">
-                <span style="color:{{calendar.color}};"></span>
-                {{calendar.name}}
+                <span style="color:{{calendar.color}};"></span> {{calendar.name}}
             </label>
         </small>
         <button ng-click="cal.reload()" style="background-color: transparent; border:none;" class="icon-arrows-cw pull-right">
-            
         </button>
     </th>
 </table>
@@ -20,3 +18,4 @@
         </tbody>
     </table>
 </div>
+

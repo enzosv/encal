@@ -14,5 +14,9 @@
 		vm.reload = function(){
 			Calendar.reload();
 		};
+
+		vm.apply = function(){
+			$scope.$digest();
+		}
 	}
 })();

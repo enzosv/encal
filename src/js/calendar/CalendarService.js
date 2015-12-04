@@ -4,9 +4,7 @@
 	angular.module('endo')
 		.factory('Calendar', CalendarFactory);
 
-	// CalendarFactory.$inject = ["EventFactory", "$http", "$rootScope"];
-
-	function CalendarFactory($http, $rootScope, Event) {
+	function CalendarFactory($http, Event) {
 		var headers;
 		var startTime;
 		var endTime;
@@ -34,16 +32,13 @@
 				if (local.calendars) {
 					calendars = local.calendars;
 					controller.calendars = calendars;
-					console.log(calendars);
 					for (var i = 0; i < calendars.length; i++) {
 						for (var j = 0; j < calendars[i].events.length; j++) {
 							Event.prepareForDisplay(calendars[i].events[j]);
 						}
 					}
 					controller.events = Event.getEvents();
-					console.log(controller.events);
-					primaryCalendar = local.primaryCalendar;
-					$rootScope.$apply();
+					// $rootScope.$apply();
 					if (local.last_fetched && local.last_fetched < new Date()
 						.getTime() - 300000) {
 						calendarVisibility = local.calendarVisibility;
@@ -52,7 +47,7 @@
 						}
 						reload();
 					} else {
-						console.log(local.last_fetched);
+						console.log("last fetched: " + local.last_fetched);
 						getToken();
 					}
 				} else {
