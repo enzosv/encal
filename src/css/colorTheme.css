@@ -1,0 +1,28 @@
+.table {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+    background-color: rgba(37, 37, 37, 0.9);
+}
+
+.highlighted {
+    background-color: rgba(37, 37, 37, 0.9);
+}
+
+tr {
+    border: rgba(255, 255, 0, 0.8) 1px solid
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

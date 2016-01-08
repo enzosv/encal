@@ -19,20 +19,23 @@
         <script type="text/javascript" src="js/calendar/EventDirective.js"></script>
         <script type="text/javascript" src="js/calendar/EventService.js"></script>
         <script type="text/javascript" src="js/calendar/EventController.js"></script>
+        <script type="text/javascript" src="js/image/ImageFactory.js"></script>
         <!-- endbuild -->
         <!-- build:css combined.min.css -->
-        <link rel="stylesheet" type="text/css" href="css/bootstrap-solarized-light.css">
+        <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-solarized-light.css"> -->
+        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/icons.css">
+        <link rel="stylesheet" type="text/css" href="css/colorTheme.css">
         <!-- endbuild -->
     </head>
 
-    <body style="width:50%; margin-left:25%; margin-top:1%;">
+    <body style="width:50%; margin-left:25%; margin-top:1%; background-image: url('http://visualhunt.com/photos/1/dawn-landscape-nature-sunset.jpg');">
         <center>
-            <search-directive>
+            <search-directive />
             </search-directive>
             <br>
             <br>
-            <calendar search="search">
+            <calendar search="search"/>
             </calendar>
         </center>
     </body>

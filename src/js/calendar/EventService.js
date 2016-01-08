@@ -99,7 +99,8 @@
 						last_fetched: 1
 					});
 				}, function (error) {
-					console.error("DELETE EVENT ERROR: " + error);
+					console.error("DELETE EVENT ERROR");
+					console.error(error);
 				});
 		}
 
@@ -135,13 +136,13 @@
 					headers: headers
 				})
 				.then(function (response) {
-					console.log(response);
 					processEvent(response.data, calendar);
 					chrome.storage.local.set({
 						last_fetched: 1
 					});
 				}, function (error) {
-					console.error("ADD EVENT ERROR: " + error);
+					console.error("ADD EVENT ERROR:");
+					console.error(error);
 				});
 		}
 

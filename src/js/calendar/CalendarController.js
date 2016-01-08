@@ -3,7 +3,7 @@
 	angular.module('endo')
 		.controller("CalendarController", CalendarController);
 
-	function CalendarController(Calendar, $scope) {
+	function CalendarController(Calendar, $scope, Image) {
 		var vm = this;
 		Calendar.loadSaved(vm);
 
@@ -17,6 +17,11 @@
 
 		vm.apply = function(){
 			$scope.$digest();
-		}
+		};
+
+		// Image.loadRandom(function(image){
+			// console.log(document.body);
+			// document.body.image = image;
+		// });
 	}
 })();
